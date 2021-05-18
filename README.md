@@ -24,5 +24,5 @@ Możesz skorzystać z gotowej funkcji w8(), możesz skorzystać z metody Clip.se
 Uzupełnij funkcję encrypt() znajdującą się w klasie AES, tak aby szyfrowała ona wybranym algorytmem AES otrzymany na wejściu ciąg znaków (inputString). 
 Proszę wykorzystać zmienną algorithm jako argument metody Cipher.getInstance oraz pamiętać o tym że
 oprócz algorytmu ECB wszystkie pozostąłe wykorzystują wektor inicjalizacyjny 
-ProTip: W razie trudności posiłkuj się metodą decrypt() \
+ProTip: W razie trudności posiłkuj się metodą decrypt() 
 
