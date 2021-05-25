@@ -42,9 +42,12 @@ public class AES extends EncryptionMethod{
 
     public void decrypt()
             throws InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException, IllegalBlockSizeException, BadPaddingException, InvalidAlgorithmParameterException {
+
         Cipher cipher = Cipher.getInstance("AES/" + algorithm + "/PKCS5Padding");
+
         if (algorithm.equals("ECB")) cipher.init(Cipher.DECRYPT_MODE, secretKey);
         else cipher.init(Cipher.DECRYPT_MODE, secretKey, iv);
+
         byte[] plainText = cipher.doFinal(Base64.getDecoder().decode(inputString.getBytes(StandardCharsets.UTF_8)));
         setOutputString(new String(plainText));
 
@@ -55,9 +58,11 @@ public class AES extends EncryptionMethod{
     }
 
     public void generateIv() {
+
         byte[] iv = new byte[16];
         new SecureRandom().nextBytes(iv);
         setIv(new IvParameterSpec(iv));
+
     }
 
     public String getOutputString() {
@@ -73,6 +78,7 @@ public class AES extends EncryptionMethod{
     }
 
     public void setKeyString(String keyString) {
+
         this.keyString = keyString;
         secretKey = new SecretKeySpec(keyString.getBytes(StandardCharsets.UTF_8), "AES");
     }

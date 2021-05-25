@@ -11,10 +11,6 @@ public class Monoalphabetic extends EncryptionMethod{
     Map<Character, Double> polishLetters = new HashMap<Character, Double>();
     Map<Character, Double> textLetters = new HashMap<Character, Double>();
 
-    /*public Monoalphabetic(String input, String output, String key) {
-        super(input, output, key);
-    }*/
-
     public Monoalphabetic() {
         setPolishLetters();
         setDefaultReplacement();
@@ -46,43 +42,58 @@ public class Monoalphabetic extends EncryptionMethod{
         calculateTextLettersFrequency();
         char letter;
         char[] text = getInput().toCharArray();
+
         for(int i = 0; i < text.length; i++) {
+
             letter = text[i];
             if (text[i] != ' ') text[i] = getOriginalLetter(letter);
+
         }
 
         setOutput(new String(text));
     }
 
     private char getOriginalLetter(char letter) {
+
         for (char key : replacement.keySet()) {
+
             if (replacement.get(key).equals(letter)) {
                 return key;
             }
+
         }
+
         return '#';
     }
 
     public void calculateTextLettersFrequency() {
         calculateTextLettersCount();
+
         for (Character letter : polishLetters.keySet()) { //pętla po każdej literce alfabetu
             int letterCount = 0;
             double freq = 0;
+
             for (int i = 0; i < getInput().length(); i++) { //petla po każdej literce tekstu
+
                 if( letter == getInput().charAt(i)) {
                     letterCount++;
+
                 }
             }
+
             freq = (double) letterCount/textLettersCount;
             textLetters.put(letter, freq);
         }
     }
 
     public void calculateTextLettersCount() {
+
         for(int i = 0; i < getInput().length(); i++) {
+
             if( getInput().charAt(i) != ' ' ) {
                 textLettersCount++;
             }
+
         }
     }
 

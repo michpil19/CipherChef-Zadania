@@ -117,11 +117,9 @@ public class MorseCode extends EncryptionMethod{
         morseToLetter.put("----.",'9');
         morseToLetter.put("-----",'0');
 
-
-
         morseToLetter.put("/", ' ');
     }
-    public void encrypt(){
+    public void encrypt() {
         String encryptedInMorse = "";
         for(int i = 0; i < getInput().length();i++){
             String currentSign = letterToMorse.get(getInput().charAt(i));//getinput to teskt do zaszyfrowania
@@ -130,7 +128,7 @@ public class MorseCode extends EncryptionMethod{
         setOutput(encryptedInMorse);
     }
 
-    public void decrypt(){//litery w kodzie morsa odseparowuje sie spacjami a slowa "/"
+    public void decrypt() {//litery w kodzie morsa odseparowuje sie spacjami a slowa "/"
         String decrypted = "";
         String messageInMorseWithSpaces = getInput()+" ";//dodanie jednej spacji pozwala na działanie prostszego algorytmu w petli potem
         ArrayList<String> morseCodeMessage = new ArrayList<String>();
@@ -154,7 +152,6 @@ public class MorseCode extends EncryptionMethod{
                 counter++;
             }
         }
-
 
         for(int i = 0; i < morseCodeMessage.size();i++){ //porwnuje przechowywane ciagi z arraylisty do mapy i zamieniam na normalna wiadomosc
                 String cellContent = morseCodeMessage.get(i);
